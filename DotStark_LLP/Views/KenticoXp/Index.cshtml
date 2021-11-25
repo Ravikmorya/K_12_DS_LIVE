@@ -1,0 +1,163 @@
+﻿@using Kentico.Web.Mvc
+@using Kentico.PageBuilder.Web.Mvc
+
+@using DotStark_LLP.Extensions;
+@model DotStark_LLP.Models.KenticoXp.IndexViewModel
+
+@{
+    ViewBag.Title = Model.KenticoXp;
+}
+
+@section styles
+{
+    @* Includes stylesheets necessary for page builder functionality *@
+    @Html.Kentico().PageBuilderStyles()
+}
+
+<html>
+<head>
+
+</head>
+<body>
+
+    <div>
+        @foreach (var kentico in Model.KenticoXp)
+        {
+            <div>
+
+                <!-- mid section -->
+                <div class="paddingBottomZero">
+
+                    <!-- slider -->
+                    <div class="row" data-anchor="menu-home">
+                        <div class="kentico_banner">
+                            <img src="@Url.KenticoImageUrl(kentico.Banner.GetPath())" @*style="width:100%"*@>
+                        </div>
+                    </div>
+                    <div class="wh-container wow fadeInUp">
+                        @Html.Kentico().ResolveUrls(kentico.KenticoXperience)
+                    </div>
+
+                </div>
+                <div class="kentico_features-bg">
+                    <div class="container">
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="kentico_features">
+                                    @Html.Kentico().ResolveUrls(kentico.KenticoFeatures)
+                                    <div class="row">
+                                        <div class="col-md-6">
+
+                                            <div class="info_kentico">
+                                                <ul>
+                                                    <!--<img src="@Url.KenticoImageUrl(kentico.DotImage.GetPath())"--> @*style="width:100%"*@<!-->-->
+                                                    @Html.Kentico().ResolveUrls(kentico.ContentManagement)
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="info_kentico">
+                                                <ul>
+                                                    <!--<img src="@Url.KenticoImageUrl(kentico.DotImage.GetPath())"--> @*style="width:100%"*@<!-->-->
+                                                    @Html.Kentico().ResolveUrls(kentico.Scalability)
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="img_info">
+                                    <img src="@Url.KenticoImageUrl(kentico.KenticoFeaturesImage.GetPath())" @*style="width:100%"*@>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="midsection paddingBottomZero padding_top-views wow fadeInUp">
+                    <!-- slider -->
+
+                    <div class="wh-container wow fadeInUp">
+                        <h2 class="ptitle-heading">@kentico.WhatWe</h2>
+                    </div>
+                    <div class="our_services-info">
+                        <div class="container">
+							<div class="row">
+								@foreach (var image in Model.Images)
+								{
+									<div class="col-6 col-md-3">
+										<div class="icon-info-details">
+											<img src="@Url.KenticoImageUrl(image.Build.GetPath())" @*style="width:100%"*@>
+											<img src="/img/Kentico/1.png" alt="">
+											@Html.Kentico().ResolveUrls(image.BuildText)
+										</div>
+									</div>
+								}								
+							</div>
+                        
+                        
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+
+                <div class="hire-bg">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="info-hire_baner">
+                                    @Html.Kentico().ResolveUrls(kentico.HireCertified)
+                                    <span><img src="@Url.KenticoImageUrl(kentico.HireCertifiedImg.GetPath())" style="width:30%" alt="Kentico xperience Certified 13">
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Contact -->
+                <div class="wh-container wow fadeInUp">
+                    
+                    <div class="our_clint">
+                        <div class="row">
+                            @foreach (var image in Model.Images) {
+							<div class="col-6 col-md-2">
+								
+								<span><a href="#"><img src="@Url.KenticoImageUrl(image.FooterImg.GetPath())" ></a></span>
+							</div>
+							}
+                            @*<div class="col-6 col-md-2">
+                                <span><a href="#"><img src="/img/Kentico/c_image2.png" alt=""></a></span>
+                            </div>
+                            <div class="col-6 col-md-2">
+
+                                <span><a href="#"><img src="/img/Kentico/c_image3.png" alt=""></a></span>
+                            </div>
+                            <div class="col-6 col-md-2">
+
+                                <span><a href="#"><img src="/img/Kentico/c_image4.png" alt=""></a></span>
+                            </div>
+                            <div class="col-6 col-md-2">
+
+                                <span><a href="#"><img src="/img/Kentico/c_image5.png" alt=""></a></span>
+                            </div>
+                            <div class="col-6 col-md-2">
+
+                                <span><a href="#"><img src="/img/Kentico/c_image6.png" alt=""></a></span>
+                            </div>*@
+                        </div>
+                    </div>
+					
+                </div>
+
+            </div>
+
+		}
+        <div class="clearfix"></div>
+
+    </div>
+    <div>
+    </div>
+</body>
+</html>
+

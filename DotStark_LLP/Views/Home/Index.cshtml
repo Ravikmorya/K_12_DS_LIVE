@@ -1,0 +1,309 @@
+﻿@using Kentico.Web.Mvc
+@using Kentico.PageBuilder.Web.Mvc
+
+@using DotStark_LLP.Extensions;
+@model DotStark_LLP.Models.Home.IndexViewModel
+
+
+
+@{
+    ViewBag.Title = Model.HomeExs;
+}
+
+@section styles
+{
+    @* Includes stylesheets necessary for page builder functionality *@
+    @Html.Kentico().PageBuilderStyles()
+}
+
+@section scripts
+{
+    @* Includes scripts necessary for page builder functionality *@
+    @Html.Kentico().PageBuilderScripts()
+}
+
+@helper MoreButton(string text, string url)
+{
+    if (!String.IsNullOrEmpty(url) && (!String.IsNullOrEmpty(text)))
+    {
+        <div class="wow fadeInRight text-center">
+            <a href="@Url.Content(url)" class="contact-btn">
+                @text
+            </a>
+        </div>       
+    }
+}
+
+
+<HTML>
+<head>
+
+    @Styles.Render("~/Content/css")
+</head>
+<body>
+    <!-- mid section -->
+    <div class="paddingBottomZero">
+        <!-- slider -->
+        <div class="row" data-anchor="menu-home">
+            @foreach (var homeItem in Model.HomeItems)
+            {
+                <div class="col-lg-6">
+                    <div class="bannercontent wow fadeInLeft">
+                        <h2>
+                            @Html.Kentico().ResolveUrls(homeItem.RISEON)
+                        </h2>
+                        <h3>
+                            @Html.Kentico().ResolveUrls(homeItem.Whatsgoing)
+
+                        </h3>
+                    </div>
+                </div>
+            }
+            <div class="col-lg-6 wow fadeInRight">
+                <div id="carousel-stark-slider" class="carousel slide carousel-fade" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-stark-slider" class="slide-yellow active" data-slide-to="0"></li>
+                        <li data-target="#carousel-stark-slider" class="slide-orange" data-slide-to="1"></li>
+                        <li data-target="#carousel-stark-slider" class="slide-green" data-slide-to="2"></li>
+                        <li data-target="#carousel-stark-slider" class="slide-blue" data-slide-to="3"></li>
+                    </ol>
+
+
+                    <div class="w3-content w3-section">
+                        @foreach (var banner in Model.Banners)
+                        {
+                            <img class="mySlides" src="@Url.KenticoImageUrl(banner.Image.GetPath())" style="width:100%">
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            @* Inserts a page builder editable area, allowing modular content composition using widgets *@
+            @Html.Kentico().EditableArea("editableArea")
+            <div class="wh-container wow fadeInUp padding-space">
+
+                @foreach (var homeItem in Model.HomeItems)
+                {
+                    <h2 class="ptitle-heading">@homeItem.Head1</h2>
+                    <p class="ptext">@homeItem.Head2</p>
+                    <p class="ptext1">
+                        @homeItem.Head3
+                    </p>
+                    <p class="ptext1">
+                        @homeItem.STARK
+                    </p>
+                }
+            </div>
+
+            <div class="wh-container wow fadeInUp padding-space">
+                @foreach (var homeEx in Model.HomeExs)
+                {
+                    <h2 class="ptitle-heading">@homeEx.Header1</h2>
+                    <p class="ptext">@homeEx.Header2</p>
+                }
+                <div class="all_services">
+                    <div class="row">
+                        <div class="text-center">
+							<div>
+								@foreach (var homeEx in Model.HomeExs)
+								{
+									<ul class="nav nav-tabs expertise_views">
+										<li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#menu1">@homeEx.KenticoD</a> </li>
+										<li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#menu2">@homeEx.CloudD</a> </li>
+										<li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#menu3">@homeEx.MigrationE</a> </li>
+										<li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#menu4">@homeEx.Consulting</a> </li>
+									</ul>
+								}
+							</div>
+                           
+                            <!-- Tab panes -->
+                            <div class="tab-content details_views">
+                                @foreach (var homeEx in Model.HomeExs)
+                                {
+
+                                    <div id="menu1" class="container tab-pane active">
+                                        <br>
+                                        <p>
+                                            @Html.Kentico().ResolveUrls(homeEx.KenticoD1)
+
+                                        </p>
+                                    </div>
+                                    <div id="menu2" class="container tab-pane fade">
+                                        <br>
+                                        <p>
+                                            @Html.Kentico().ResolveUrls(homeEx.CloudD1)
+                                        </p>
+                                    </div>
+                                    <div id="menu3" class="container tab-pane fade">
+                                        <br>
+                                        <p>
+                                            @Html.Kentico().ResolveUrls(homeEx.MigrationE1)
+                                        </p>
+
+                                    </div>
+                                    <div id="menu4" class="container tab-pane fade">
+                                        <br>
+                                        <p>
+                                            @Html.Kentico().ResolveUrls(homeEx.Consulting1)
+                                        </p>
+
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="wh-container wow fadeInUp padding-space zIndex-1">
+                @foreach (var homeEx in Model.HomeExs)
+                {
+
+                    <h2 class="ptitle-heading">@homeEx.WhatClient</h2>
+                    <p class="ptext mb50">@homeEx.WeRespect</p>
+                    <div class="wow fadeInRight">
+                        <!-- feedback slideshow -->
+                        <div class="container">
+                            <div class="row">
+                                @*Bootstrap carousel*@
+                                <div class="carousel slide" id="carouselExampleIndicators" data-ride="carousel">
+
+
+                                    @*Bootstrap inner [slides]*@
+                                    <div class="carousel-inner px-5">
+                                        @*Carousel slide*@
+                                        <div class="carousel-item active">
+
+                                            <div class="media">
+
+                                                <div class="media-body ml-3">
+                                                    <blockquote class="blockquote border-0 p-0">
+                                                        <p class="font-italic lead">
+                                                            <i class="fa fa-quote-left mr-1 text-success"></i>
+                                                            @homeEx.Worked
+                                                        </p>
+                                                        <footer class="blockquote-footer">
+                                                            <cite title="Source Title">@homeEx.Director</cite>
+                                                        </footer>
+                                                    </blockquote>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        @*Carousel slide*@
+                                        <div class="carousel-item">
+                                            <div class="media">
+
+                                                <div class="media-body ml-3">
+                                                    <blockquote class="blockquote border-0 p-0">
+                                                        <p class="font-italic lead">
+                                                            <i class="fa fa-quote-left mr-1 text-success"></i>
+                                                            @homeEx.DotStark
+                                                        </p>
+                                                        <footer class="blockquote-footer">
+
+                                                            <cite title="Source Title">@homeEx.Manager</cite>
+                                                        </footer>
+                                                    </blockquote>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+
+            @foreach (var homeItem in Model.HomeItems)
+            {
+                <div class="wh-container wow fadeInUp padding-space">
+
+
+                    <h2 class="ptitle-heading">@homeItem.KenticoExperts</h2>
+                    <p class="ptext">@homeItem.Partner</p>
+                    <div class="row partner-section">
+                        <div class="col-md-4 col-lg-4 col-sm-4 col-12 fleft">
+                            <a href="https://xperience.io/" target="_blank">
+                                <img defer src="@Url.KenticoImageUrl(homeItem.Xperience.GetPath())" class="img-responsive img-rounded">
+                            </a>
+                        </div>
+                        <div class="col-md-4 col-lg-4 col-sm-4 col-12 fleft">
+                            <img defer src="@Url.KenticoImageUrl(homeItem.KenticoC.GetPath())" class="img-responsive img-rounded">
+                        </div>
+                        <div class="col-md-4 col-lg-4 col-sm-4 col-12 fleft">
+                            <img defer src="@Url.KenticoImageUrl(homeItem.KenticoBro.GetPath())" class="img-responsive img-rounded">
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="wh-container wow fadeInUp padding-space">
+                    <h2 class="ptitle-heading">Explore Possibilities</h2>
+                    <p class="ptext">Speak with our Experts <br /><br /></p>
+                    @*  Change Class type *@
+                    <div class="wow fadeInRight text-center, contact-btn">
+                        @MoreButton(homeItem.ReadMoreText, homeItem.ReadMorePage)
+                    </div>
+                </div>
+            }
+        </div>
+
+        @*Inserts a page builder editable area, allowing modular content composition using widgets*@
+        <div class="contact-btn">@Html.Kentico().EditableArea("editableArea")</div>
+
+        @*</div>*@
+        <!-- Contact -->
+        <div class="wh-container contact-section wow fadeInUp">
+
+        </div>
+        <script src="~/Content/jquery.min.js"></script>
+        <script src="~/Content/slick.min.js"></script>
+        <link href="~/Content/site.css" rel="stylesheet" />
+
+        <script>
+            var myIndex = 0;
+            carousel();
+
+            function carousel() {
+                var i;
+                var x = document.getElementsByClassName("mySlides");
+                for (i = 0; i < x.length; i++) {
+                    x[i].style.display = "none";
+                }
+                myIndex++;
+                if (myIndex > x.length) { myIndex = 1 }
+                x[myIndex - 1].style.display = "block";
+                setTimeout(carousel, 4000); // Change image every 2 seconds
+            }
+        </script>
+
+</body>
+</HTML>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

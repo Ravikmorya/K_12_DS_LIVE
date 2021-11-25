@@ -1,0 +1,89 @@
+﻿@using Kentico.Web.Mvc
+@using Kentico.PageBuilder.Web.Mvc
+
+@using DotStark_LLP.Extensions;
+@model DotStark_LLP.Models.Contact.IndexViewModel
+
+@section styles
+{
+    @* Includes stylesheets necessary for page builder functionality *@
+    @Html.Kentico().PageBuilderStyles()
+}
+
+@section scripts
+{
+    @* Includes scripts necessary for page builder functionality *@
+    @Html.Kentico().PageBuilderScripts()
+}
+
+
+
+<html>
+<head>
+	<link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+   
+    
+        @*@foreach (var image in Model.Images)
+        {*@
+        <div class="detail">
+
+            @*<img src="@Url.KenticoImageUrl(image.Banner.GetPath())">*@
+        </div>
+       
+
+        <!-- mid section -->
+        <div class="midsection p-3">
+            <div class="about-section p-0">
+                <div class="container">
+                    <div class="row">
+                        <div class="col- col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center">
+                            <div class="about-details wow fadeInUp padding_resize">
+                                @foreach (var contact in Model.Contacts)
+                                {
+                                    <h1>@contact.OurLocation</h1>
+                                    <h3 class="contact-sub-head">
+                                        @contact.Consider
+                                    </h3>
+                                    <div class="col-md-5 fl">
+                                        <h4 class="text-justify locations"><strong>@contact.Development</strong></h4>
+                                        <h4 class="text-justify">@contact.CountryName</h4>
+                                        <p class="text-justify">
+                                            @contact.Address <br />
+                                            @contact.Phone<br />
+                                            <a href="mailto:support@dotstark.com" class="support-email">support@dotstark.com</a>
+                                        </p>
+                                    </div>                                  
+                                }
+                                <div class="clearfix"></div>
+                                <div class="form">
+                                    <div class="query_form_bg">
+                                        <div class="col-md-7 fl">
+                                            <div class="query_form">
+                                                <div class="col-md-12">
+                                                    <h4 class="text-justify font-weight-bold">We would love to hear from you. </h4>
+                                                </div>
+                                            </div>
+                                            @Html.Kentico().EditableArea("Contact Us")
+                                        </div>                                      
+                                        @*<div class="col-md-5 fl padding_set-views">
+                                            <span class="img_edit_pen"> <img src="@Url.KenticoImageUrl(image.ImgPen.GetPath())" alt="" class="img-fluid"></span>
+                                        </div>*@                                       
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- slider -->
+        </div>
+        <div class="clearfix"></div>
+        @*}*@
+   
+    @*}*@
+        <div>
+        </div>
+    </body>
+</html>

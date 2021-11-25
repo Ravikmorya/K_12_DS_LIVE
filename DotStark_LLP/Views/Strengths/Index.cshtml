@@ -1,0 +1,63 @@
+﻿@using Kentico.Web.Mvc
+@using Kentico.PageBuilder.Web.Mvc
+
+@using DotStark_LLP.Extensions;
+@model DotStark_LLP.Models.Strengths.IndexViewModel
+
+@section styles
+{
+    @* Includes stylesheets necessary for page builder functionality *@
+    @Html.Kentico().PageBuilderStyles()
+}
+
+
+<html>
+<head>
+
+</head>
+<body>
+    <div>
+
+        @foreach (var strength in Model.Strengths)
+        {
+        <div class="detail">
+            <img src="@Url.KenticoImageUrl(strength.File.GetPath())" style="width:100%">>
+        </div>
+
+        <div class="midsection p-3">
+            <div class="about-section p-0">
+                <div class="container">
+                    <div class="row">
+                        <div class="col- col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center">
+
+                            <div class="about-details wow fadeInUp">
+                                <h1>@strength.Heading</h1>
+                                <h3>
+                                    @strength.Heading1
+                                </h3>
+                                <div class="about_kentico_development">
+                                    @Html.Kentico().ResolveUrls(strength.Text)
+                                    @*<p><span>Knowledge - </span>We proudly said we are a startup and we have amazing peoples to who take this startup to the next level. Things works when we have knowledge and we proudly said - we have</p>
+                                    <p><span>Culture - </span>Our culture is not only bind the internal team instead it binds the customer with us. We have few but all customers are still engaged our developers.</p>
+                                    <p><span>Commitment - </span>Worldwide just 30% of all software projects are delivered on time, on budget, and with required features and functions. One of the biggest reason is inaccurate estimation and commitment on that. This is what we are not doing thats why we are AGILE.</p>
+                                    <p><span>Educators - </span>Let's be honest, We are agile team and we never believe on a fixed deadline without any reason. If you love Waterfall for a complex project we will try to educate you.</p>
+                                    <p><span>Prototyping - </span>We believe on mock-up design, talking to you, discussing with you which creates a physical and imaginary mock-up. We support the creative process through the design of prototype solutions from a very early stage.</p>
+                                    <p><span>Leadership - </span>Proactiveness and Leadership is our one of the core strength. As a team of fresh blood with experience peoples, we do leadership sessions, debate, knowledge sharing to make the team members up to date.</p>*@
+                               
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- slider -->
+        </div>
+        <div class="clearfix"></div>
+
+        }
+    </div>
+    <div>
+    </div>
+</body>
+</html>

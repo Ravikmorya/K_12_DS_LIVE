@@ -1,0 +1,124 @@
+﻿@using Kentico.Web.Mvc
+@using Kentico.PageBuilder.Web.Mvc
+
+@using DotStark_LLP.Extensions;
+@model DotStark_LLP.Models.IndexViewModel
+
+
+@{
+	ViewBag.Title = Model.Servicess;
+}
+
+@section styles
+{
+	@* Includes stylesheets necessary for page builder functionality *@
+	@Html.Kentico().PageBuilderStyles()
+}
+
+
+
+
+
+<html>
+<head>
+
+</head>
+<body>
+	<div class="midsection1">
+		<div class="about-section">
+			<div class="container set_with">
+				@foreach (var service in Model.Servicess)
+				{ 
+				<div class="servier-box">
+					<div class="row">
+						<div class="col- col-sm-12 col-md-6 col-lg-6 col-xl-6 my-auto">
+							<div class="services wow fadeInUp" style="visibility: visible;">
+								@Html.Kentico().ResolveUrls(service.Text1)
+								<a href="/expert-design">Read more <img src="@Url.KenticoImageUrl(service.TextImage.GetPath())" alt=""></a>
+							</div>
+						</div>
+						<div class="col- col-sm-12 col-md-6 col-lg-6 col-xl-6 my-auto text-center">
+							<div class="service-img wow fadeInRight"><img src="@Url.KenticoImageUrl(service.TextImage1.GetPath())" alt="" class="img-fluid"></div>
+							
+						</div>
+					</div>
+				</div>
+				<div class="servier-box">
+					<div class="row">
+						<div class="col- col-sm-12 col-md-6 col-lg-6 col-xl-6 my-auto order-2 order-xl-0 order-lg-0 order-md-0 text-center">
+							<div class="service-img wow fadeInLeft" style="visibility: hidden; animation-name: none;"> <img src="@Url.KenticoImageUrl(service.TextImage2.GetPath())" alt="" class="img-fluid"> </div>
+						</div>
+						<div class="col- col-sm-12 col-md-6 col-lg-6 col-xl-6 my-auto">
+							<div class="services wow fadeInRight" style="visibility: hidden; animation-name: none;">
+								@Html.Kentico().ResolveUrls(service.Text2)
+								<a href="/web-development">Read more <img src="@Url.KenticoImageUrl(service.TextImage.GetPath())" alt=""></a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="servier-box">
+					<div class="row">
+						<div class="col- col-sm-12 col-md-6 col-lg-6 col-xl-6 my-auto">
+							<div class="services wow fadeInUp" style="visibility: hidden; animation-name: none;">
+								@Html.Kentico().ResolveUrls(service.Text3)
+								<a href="/devops">Read more <img src="@Url.KenticoImageUrl(service.TextImage.GetPath())" alt=""></a>
+							</div>
+						</div>
+						<div class="col- col-sm-12 col-md-6 col-lg-6 col-xl-6 my-auto text-center">
+							<div class="service-img wow fadeInRight" style="visibility: hidden; animation-name: none;"> <img src="@Url.KenticoImageUrl(service.TextImage3.GetPath())" alt="" class="img-fluid"> </div>
+						</div>
+					</div>
+				</div>
+				<div class="servier-box">
+					<div class="row">
+						<div class="col- col-sm-12 col-md-6 col-lg-6 col-xl-6 my-auto order-2 order-xl-0 order-lg-0 order-md-0 text-center">
+							<div class="service-img wow fadeInLeft" style="visibility: hidden; animation-name: none;"> <img src="@Url.KenticoImageUrl(service.TextImage4.GetPath())" alt="" class="img-fluid"> </div>
+						</div>
+						<div class="col- col-sm-12 col-md-6 col-lg-6 col-xl-6 my-auto">
+							<div class="services wow fadeInRight" style="visibility: hidden; animation-name: none;">
+								@Html.Kentico().ResolveUrls(service.Text4)
+								<a href="/digital-marketing-services">Read more <img src="@Url.KenticoImageUrl(service.TextImage.GetPath())" alt=""></a>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="servier-box">
+					<div class="row">
+						<div class="col- col-sm-12 col-md-6 col-lg-6 col-xl-6 my-auto">
+							<div class="services wow fadeInUp" style="visibility: hidden; animation-name: none;">
+								@Html.Kentico().ResolveUrls(service.Text5)
+								<a href="/cloud-services">Read more <img src="@Url.KenticoImageUrl(service.TextImage.GetPath())" alt=""></a>
+							</div>
+						</div>
+						<div class="col- col-sm-12 col-md-6 col-lg-6 col-xl-6 my-auto text-center">
+							<div class="service-img wow fadeInRight" style="visibility: hidden; animation-name: none;"> <img src="@Url.KenticoImageUrl(service.TextImage5.GetPath())" alt="" class="img-fluid"> </div>
+						</div>
+					</div>
+				</div>
+				<div class="servier-box">
+					<div class="row">
+						<div class="col- col-sm-12 col-md-6 col-lg-6 col-xl-6 my-auto order-2 order-xl-0 order-lg-0 order-md-0 text-center">
+							<div class="service-img wow fadeInLeft" style="visibility: hidden; animation-name: none;"> <img src="@Url.KenticoImageUrl(service.TextImage5.GetPath())" alt="" class="img-fluid"> </div>
+						</div>
+						<div class="col- col-sm-12 col-md-6 col-lg-6 col-xl-6 my-auto">
+							<div class="services wow fadeInRight" style="visibility: hidden; animation-name: none;">
+								@Html.Kentico().ResolveUrls(service.Text6)
+								<a href="/mobile-application">Read more <img src="@Url.KenticoImageUrl(service.TextImage.GetPath())" alt=""></a>
+							</div>
+						</div>
+					</div>
+				</div>
+				}
+			</div>
+		
+		</div>
+		<!-- slider -->
+		<div class="clear"></div>
+	</div>
+
+	<div class="clearfix"></div>
+	<div>
+	</div>
+</body>
+</html>

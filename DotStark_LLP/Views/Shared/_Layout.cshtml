@@ -1,0 +1,174 @@
+﻿@*@using Kentico.PageBuilder.Web.Mvc
+@using DotStark_LLP.Extensions;*@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="~/content/images/favicon.png" type="image/png" />
+    <link href="~/Content/site.css" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/Styles/Site.css")" rel="stylesheet" type="text/css" />
+
+
+    <link href="http://fonts.googleapis.com/css?family=Lato:400,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Lobster" rel="stylesheet" type="text/css">
+
+    @*<script src="~/Scripts/jquery-3.6.0.js"></script>
+    <script src="~/Scripts/jquery-3.6.0.min.js"></script>*@
+
+    @Styles.Render("~/Content/css")
+
+    <link rel="stylesheet" href="/css/font-awesome.min.css" media="none" onload="if(media!='all')media='all'">
+    <noscript><link rel="stylesheet" href="/css/font-awesome.min.css"></noscript>
+
+    <link rel=preload href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&display=swap">
+
+    @*Bootstrap CSS*@
+    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/css/animate.min.css" rel="stylesheet" />
+    <link href="~/Content/css/custom.css" rel="stylesheet" />
+    <link href="~/Content/css/style.min.css" rel="stylesheet" />
+    <link href="~/Content/css/styles.css" rel="stylesheet" />
+    @*<link href="~/Content/css/main.css" rel="stylesheet" />*@
+    <link href="~/Content/css/slidefooter.css" rel="stylesheet" />
+
+    <link href="~/Content/css/fancybox.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+    @Html.Kentico().PageBuilderStyles()
+
+    @* Loads the styles.css resource *@
+    @Styles.Render("~/Content/css")
+    @* Razor section for additional page-specific styles *@
+    @RenderSection("styles", required: false)
+
+
+</head>
+<body @*class="fixheader"*@>
+    <button type="button" class="mobile-nav-toggle d-lg-none"><i class="fa fa-bars"></i></button>>
+    @*<div>*@
+    <div class="midsection">
+        <header id="header">
+            <div id="topbar">
+                <div class="topbar">
+                    <div class="custom-container">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <ul class="call">
+                                    <li><a href="tel:+919680599916">+91 9680599916</a></li>
+                                    <li><a href="mailto:support@dotstark.com">support@dotstark.com</a></li>
+                                    <li><a href="skype:live:.cid.6786fce183b73ec1?chat">Skype</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="custom-container">
+                <div class="logo float-left">
+                    <!-- Uncomment below if you prefer to use an image logo -->
+                    @*<h1 class="logo">*@
+                    @Html.ActionLink("DotStark_LLP/logo.png", "Index", new { controller = "Home" }, new { @class = "scrollto" })
+                    @*</h1>*@
+
+
+                    @*<div class="text-light"><a href="/" class="scrollto"><img src="/img/logo.png" alt=""></a></div>*@
+                </div>
+                <nav class="main-nav float-right d-none d-lg-block">
+                    <ul id="menu-ul">
+                        <li class="active">
+							@Html.ActionLink(("Home"), "Index", "Home", new { @class= "menu_selected nav-link menu-se" })
+                        </li>
+                        <li class="">
+							@Html.ActionLink(("Story"), "Index", "Story" )
+                        </li>
+						<li class="">
+							@Html.ActionLink(("Kentico"), "Index", "KenticoXp")					
+						</li>
+                        <li class="">
+							@Html.ActionLink(("Service"), "Index", "Service")
+                        </li>
+                        <li class="">
+							@Html.ActionLink(("Strengths"), "Index", "Strengths")
+                        </li>
+                        <li class="">
+							@Html.ActionLink(("Jobs"), "Index", "Jobs")
+                        </li>
+                        <li class="">
+							@Html.ActionLink(("Contacts"), "Index", "Contacts")
+                        </li>
+                    </ul>
+                </nav>
+                <!-- .main-nav -->
+            </div>
+        </header>
+
+        <div class="body-content">
+            @RenderBody()
+
+            <footer>
+                <div class="container footer">
+                    <div class="row ">
+                        <div class="col-md-4 copyright">
+                            <p>©Copyright 2021 <a href="/">DotStark Technologies</a></p>
+                        </div>
+                        <div class="col-md-4 text-center privacy-policy">
+                            <p><a href="/privacy-policy">Privacy Policy</a></p>
+
+                        </div>
+                        <div class="col-md-4 social-links">
+                            <ul>
+                                <li>
+                                    <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/company/dotstark-technologies/">                                        
+                                        <img defer="" src="~/DotStark_LLP/media/headre/linkedIn.png" />
+                                    </a>
+                                </li>
+                                <li>
+                                    <a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/dotstarktechnologies/">                                        
+                                        <img defer="" src="~/DotStark_LLP/media/headre/facebook.png" />
+                                    </a>
+                                </li>
+                                <li class="twitter-icon">
+                                    <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/dotstarktech">                                       
+                                        <img defer="" src="~/DotStark_LLP/media/headre/twitter.png" />
+                                    </a>
+                                </li>
+                                <li class="pinterest-icon">
+                                    <a target="_blank" rel="noopener noreferrer" href="https://in.pinterest.com/dotstarktechnologies/"                                        
+                                        <img defer="" src="~/DotStark_LLP/media/headre/pinterest.png" />
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jquery-unobtrusive-ajax")
+    @Scripts.Render("~/bundles/jquery-validation")
+    @Scripts.Render("~/Scripts/responsiveMenuDropdown.js")
+    @Scripts.Render("~/Scripts/mobileMenu.js")
+
+   
+
+    @RenderSection("scripts", required: false)
+
+    @*</div>*@
+    <script src="~/Content/jquery.min.js"></script>
+    <script src="~/Scripts/site.js"></script>
+    <script src="~/Content/slick.min.js"></script>
+</body>
+</html>

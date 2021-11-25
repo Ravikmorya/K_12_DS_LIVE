@@ -1,0 +1,73 @@
+﻿@using Kentico.Web.Mvc
+@using Kentico.PageBuilder.Web.Mvc
+
+@using DotStark_LLP.Extensions;
+@model DotStark_LLP.Models.Story.IndexViewModel
+
+
+@{
+    ViewBag.Title = Model.Storys;
+}
+
+@section styles
+{
+    @* Includes stylesheets necessary for page builder functionality *@
+    @Html.Kentico().PageBuilderStyles()
+}
+
+
+
+<html>
+<head>
+
+</head>
+<body class="fixheader">
+    <div>
+        @foreach (var story in Model.Storys)
+        {
+            <div class="detail">
+                <img src="@Url.KenticoImageUrl(story.Image.GetPath())" style="width:130%">
+                @*<img src="/img/Services/Detail/about-banner.jpg" />*@
+            </div>
+
+
+            <!-- mid section -->
+            <div class="midsection p-3">
+                <div class="about-section p-0">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col- col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center">
+                                <div class="about-details wow fadeInUp">
+                                    <h1>@story.Heading</h1>
+                                    <h3>
+                                        @story.Text
+                                    </h3>                              
+                                    <p>
+                                        @story.Text1
+                                    </p>
+                                    <p>
+                                        @story.Text2
+                                    </p>
+                                    <p>
+                                        @story.Text3
+                                    </p>
+                                    <p>@story.Text4</p>
+                                        <p>
+                                            @story.Text5
+                                        </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- slider -->
+            </div>
+            <div class="clearfix"></div>
+
+        }
+    </div>
+
+    <script src="~/Content/jquery.min.js"></script>
+    <script src="~/Content/slick.min.js"></script>
+</body>
+</html>

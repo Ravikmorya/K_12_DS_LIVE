@@ -1,0 +1,321 @@
+﻿@using Kentico.Web.Mvc
+@using Kentico.PageBuilder.Web.Mvc
+@using CMS.DocumentEngine;
+
+@using DotStark_LLP.Extensions;
+@model DotStark_LLP.Models.Jobs.IndexViewModel
+
+@*@{
+        ViewBag.Title = ModeL.;
+    }*@
+
+@section styles
+{
+    @* Includes stylesheets necessary for page builder functionality *@
+    @Html.Kentico().PageBuilderStyles()
+}
+
+@section scripts
+{
+    @* Includes scripts necessary for page builder functionality *@
+    @Html.Kentico().PageBuilderScripts()
+}
+@Styles.Render("~/Content/css")
+@Styles.Render("~/Content/Form")
+
+@*@helper MoreButton(string text, DocumentAttachment file)
+    {
+        if ((!String.IsNullOrEmpty(text)))
+        {
+            <div class="card-header_career">
+                <a href="#graduate" class="nav-link header-tab active" id="graduate-header" data-toggle="tab" role="tab">
+                    @Html.AttachmentImage(file, "img-responsive")
+                    <span> @text</span>
+                </a>
+            </div>
+            <a class="nav-link active"
+               data-toggle="tab" href="#aspnet-graduate"
+               role="tab">@text</a>
+        }
+    }
+    *@
+
+<html>
+<head>
+
+</head>
+<body>
+    <div>
+        @foreach (var jobs in Model.Jobs)
+        {
+
+            <div>
+                <div class="detail">
+                    <img src="@Url.KenticoImageUrl(jobs.Image.GetPath())" style="width:100%">
+                    @*//<img src="/img/Career/career-banner.jpg" />*@
+                </div>
+                <!-- mid section -->
+                <div class="midsection p-3">
+                    <div class="about-section p-0">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col- col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center">
+                                    <div class="about-details careers wow fadeInUp padding_resize">
+
+                                        @Html.Kentico().ResolveUrls(jobs.JobOpenings)
+
+                                        <div class="clearfix"></div>
+                                        <div class="careers_sectopm">
+                                            <div class="card_edu">
+                                                <div class="card-header_career">
+
+                                                    <ul class="nav nav-tabs nav-tabs-neutral justify-content-center career_nav"
+                                                        role="tablist" data-background-color="orange">
+                                                        <li class="nav-item">
+                                                            <a class="nav-link header-tab active" data-toggle="tab" id="graduate-header"
+                                                               href="#graduate" role="tab">
+                                                                @Html.AttachmentImage(jobs.File, "img-responsive")<span>@jobs.Text</span>
+                                                            </a>
+                                                            @*@MoreButton(jobs.Text, jobs.File)*@
+                                                        </li>
+                                                        <li class="nav-item">
+                                                            <a class="nav-link header-tab" data-toggle="tab" id="experienced-header" href="#experienced" role="tab">
+                                                                @Html.AttachmentImage(jobs.EXPERIENCEDFile, "img-responsive")
+                                                                @Html.Kentico().ResolveUrls(jobs.EXPERIENCED)
+                                                            </a>
+
+                                                        </li>
+                                                        <li class="nav-item">
+                                                            <a class="nav-link header-tab" data-toggle="tab" id="interns-header" href="#interns" role="tab">
+
+                                                                @Html.AttachmentImage(jobs.STUDENTSFILE, "img-responsive")
+                                                                @Html.Kentico().ResolveUrls(jobs.STUDENTS)
+
+                                                            </a>
+
+                                                        </li>
+
+                                                    </ul>
+                                                </div>
+                                                <div class="">
+                                                    <!-- Tab panes -->
+                                                    <div class="tab-content">
+                                                        <div class="tab-pane active" id="graduate" role="tabpanel">
+                                                            <div class="row">
+                                                                <div class="col-md-3">
+                                                                    <div class="card-header_career border_card">
+                                                                        <h5>@jobs.GraduationAsp</h5>
+                                                                        <ul class="nav nav-tabs nav-tabs-neutral sub_menus"
+                                                                            role="tablist" data-background-color="orange">
+                                                                            <li class="nav-item">
+                                                                                <a class="nav-link active"
+                                                                                   data-toggle="tab" href="#aspnet-graduate"
+                                                                                   role="tab">@jobs.ASPNET</a>
+                                                                            </li>
+                                                                            <li class="nav-item">
+                                                                                <a class="nav-link" data-toggle="tab" href="#ta-graduate"
+                                                                                   role="tab">@jobs.Talent</a>
+                                                                            </li>
+                                                                        </ul>
+                                                                        @*@Html.Kentico().ResolveUrls(jobs.GraduationAsp)*@
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-9">
+                                                                    <div class="card_body_careers">
+                                                                        <!-- Tab panes -->
+                                                                        <div class="tab-content">
+                                                                            <div class="tab-pane active" id="aspnet-graduate" role="tabpanel">
+                                                                                @Html.Kentico().ResolveUrls(jobs.Graduation)
+                                                                            </div>
+                                                                            <div class="tab-pane" id="ta-graduate" role="tabpanel">
+                                                                                <input type="hidden" id="graduate-job-role" value="Talent Acquisition Executive - Graduate" />
+                                                                                @Html.Kentico().ResolveUrls(jobs.GraduationAsp1)
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="tab-pane tabe_panes" id="experienced" role="tabpanel">
+                                                            <div class="row">
+                                                                <div class="col-md-3">
+                                                                    <div class="card-header_career border_card">
+                                                                        <h5>@jobs.EXPERIENCED1</h5>
+                                                                        <ul class="nav nav-tabs nav-tabs-neutral sub_menus"
+                                                                            role="tablist" data-background-color="orange">
+
+                                                                            <li class="nav-item">
+                                                                                <a class="nav-link"
+                                                                                   data-toggle="tab" href="#sraspnet-experienced"
+                                                                                   role="tab">@jobs.EXPERIENCED2</a>
+                                                                            </li>
+                                                                            <li class="nav-item">
+                                                                                <a class="nav-link"
+                                                                                   data-toggle="tab" href="#qa-experienced"
+                                                                                   role="tab">@jobs.EXPERIENCED3</a>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-9">
+                                                                    <div class="card_body_careers">
+                                                                        <!-- Tab panes -->
+                                                                        <div class="tab-content">
+                                                                            <div class="tab-pane active" id="sraspnet-experienced"
+                                                                                 role="tabpanel">
+
+                                                                            </div>
+
+                                                                            <div class="tab-pane" id="qa-experienced" role="tabpanel">
+
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="tab-pane tabe_panes" id="interns" role="tabpanel">
+                                                            <div class="row">
+                                                                <div class="col-md-3">
+                                                                    <div class="card-header_career border_card">
+                                                                        <h5>INTERNSHIP</h5>
+                                                                        <ul class="nav nav-tabs nav-tabs-neutral sub_menus"
+                                                                            role="tablist" data-background-color="orange">
+                                                                            <li class="nav-item">
+                                                                                <a class="nav-link active"
+                                                                                   data-toggle="tab" href="#internship-all"
+                                                                                   role="tab">Interns</a>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-9">
+                                                                    <div class="card_body_careers">
+                                                                        <!-- Tab panes -->
+                                                                        <div class="tab-content">
+                                                                            <div class="tab-pane active" id="internship-all"
+                                                                                 role="tabpanel">
+                                                                                <p>
+                                                                                    <span class="job-header">About Internship:</span>
+                                                                                    <input type="hidden" id="graduate-job-role" value="ASP.NET Developer - Graduate" />
+                                                                                    <div class="job-header">
+                                                                                        The selected intern(s) will work on following during the internship:
+                                                                                    </div>
+                                                                                    <ul>
+                                                                                        <li>Designing and developing</li>
+                                                                                        <li>Developing web application (Front end and back end).</li>
+                                                                                    </ul>
+                                                                                    <div class="job-header">
+                                                                                        You can apply if:
+                                                                                    </div>
+                                                                                    <ul>
+
+                                                                                        <li>
+                                                                                            You are available for full time (in-office) internship.
+                                                                                        </li>
+                                                                                        <li>
+                                                                                            You are available for duration of 6 months (preferred, not mandatory).
+                                                                                        </li>
+                                                                                        <li>
+                                                                                            Have/are pursuing UG/PG degrees in Engineering (B.Tech/B.E/MCA & Similar).
+                                                                                        </li>
+                                                                                        <li>Should be flexible and adapt existing environment and culture.</li>
+                                                                                        <li>Assist software personnel or juniors in handling project related work and other requirements.</li>
+
+                                                                                    </ul>
+
+                                                                                </p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- End Tabs on plain Card -->
+                                        </div>
+                                        <div class="query_form_bg">
+
+                                            <div class="col-md-7 fl">
+
+                                                <div class="query_form">
+                                                    <div class="col-md-12">
+                                                        <h4 class="text-justify font-weight-bold">
+                                                            Application form
+                                                            <span class="vie_techno"></span>
+                                                        </h4>
+                                                    </div>
+                                                </div>
+
+                                                @*Inserts a page builder editable area, allowing modular content composition using widgets*@
+                                                @Html.Kentico().EditableArea("editableArea")
+                                                @*<div id="message-form" class="contact-us-form">
+                                                        @Html.Kentico().EditableArea("JobsNew", allowedWidgets: new[] { })
+                                                    </div>*@
+                                                <div class="col-md-6" style="float:left;">
+                                                    <div class="row">
+
+                                                        <div class="col-md-12">
+
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div id="message-form" class="contact-us-form">
+                                                    @Html.Kentico().EditableArea("JobsNew")
+                                                </div>
+                                              
+
+                                            </div>
+
+                                            <div class="col-md-5 fl">
+                                                <br>
+                                                <span class="img_edit_pen"> <img alt="" class="img-fluid" src="@Url.KenticoImageUrl(jobs.Img_Pen.GetPath())"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- slider -->
+            </div>
+        }
+
+
+    </div>
+    <div>
+    </div>
+
+    <div class="clearfix"></div>
+    <script src="~/Content/careers.js"></script>
+    <script src="~/Content/jquery.min.js"></script>
+    <script src="~/Content/slick.min.js"></script>
+
+
+    <script class="jsbin" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+
+    <script>
+
+        getPosition();
+        $(".nav-item > .nav-link").click(function () {
+            setTimeout(function () { getPosition(); }, 1000);
+        })
+        function getPosition() {
+            var PositionValue = $('.header-tab.active').attr('id').split('-')[0];
+            $("#" + PositionValue + " .nav-link").each(function () {
+                if ($(this).hasClass("active")) {
+                    $("#Position").val($(this).html());
+
+                }
+            });
+        }
+    </script>
+</body>
+</html>
