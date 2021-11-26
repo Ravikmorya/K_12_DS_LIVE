@@ -27,13 +27,13 @@ steps:
     msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:PackageLocation="$(build.artifactStagingDirectory)"'
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
-- task: AzureRmWebAppDeployment@4
+- task: AzureWebApp@1
   inputs:
-    ConnectionType: 'AzureRM'
     azureSubscription: 'Free Trial (4c171ea5-0c1a-4878-94eb-1960ff9a0848)'
     appType: 'webApp'
-    WebAppName: 'cmsken'
+    appName: 'cmsken'
     deployToSlotOrASE: true
-    ResourceGroupName: 'dev'
-    SlotName: 'production'
-    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    resourceGroupName: 'dev'
+    slotName: 'production'
+    package: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    deploymentMethod: 'auto'
