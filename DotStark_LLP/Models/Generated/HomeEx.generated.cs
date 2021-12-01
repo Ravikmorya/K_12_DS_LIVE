@@ -67,7 +67,9 @@ namespace CMS.DocumentEngine.Types.DotStark
 		/// Name.
 		/// </summary>
 		[DatabaseField]
+#pragma warning disable CS0114 // Member hides inherited member; missing override keyword
 		public string Name
+#pragma warning restore CS0114 // Member hides inherited member; missing override keyword
 		{
 			get
 			{
