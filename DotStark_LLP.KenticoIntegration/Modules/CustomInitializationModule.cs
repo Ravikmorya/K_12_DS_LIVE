@@ -8,6 +8,11 @@ using System.Linq;
 using CMS.Base;
 using CMS.DataEngine;
 
+
+// Registers the custom module into the system (name matches the class we want to init)
+[assembly: RegisterModule(typeof(CustomInitializationModule))]
+
+
 namespace DotStark_LLP.KenticoIntegration.Modules
 {
     public class CustomInitializationModule : Module
